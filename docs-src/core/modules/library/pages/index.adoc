@@ -72,68 +72,18 @@ Assign types to each item in the Cassandra tables, using CQL data types.
 image::physical-model.jpg[]
 
 === Schema
-[tabs]
-====
-CQL::
-+
---
-[source, cql, subs="attributes+"]
-----
-include::example$cql/create-keyspace.cql[]
-----
---
 
-OSS REST::
-+
---
-[source, shell, subs="attributes+"]
-----
-include::example$rest/create-keyspace.sh[]
-----
---
+==== *Create keyspace/namespace*
 
-Astra REST::
-+
---
-[source,plaintext]
-----
-curl --location --request POST 'https://{{ASTRA_DB_ID}}-{{ASTRA_DB_REGION}}.apps.astra.datastax.com:8180/v2/schemas/namespaces' \
---header "X-Cassandra-Token: $AUTH_TOKEN" \
---header 'Content-Type: application/json' \
---data '{
-    "name": "test"
-}'
+include::example$tabbed/create-keyspace.adoc[]
 
-----
---
+==== *Check keyspace/namespace existence*
 
-OSS Doc API::
-+
---
-[source, shell, subs="attributes+"]
-----
-include::example$docapi/curl_check_ns_exists.sh[]
-----
---
+include::example$tabbed/check-keyspace.adoc[]
 
-Astra Doc API::
-+
---
-[source, shell, subs="attributes+"]
-----
-include::example$docapi/curl_check_ns_exists.sh[]
-----
---
+==== *Delete keyspace/namespace*
 
-httpie::
-+
---
-[source, shell, subs="attributes+"]
-----
-include::example$docapi/curl_check_ns_exists.sh[]
-----
---
-====
+==== *Create table*
 
 Write schema for the tables to be created.
 * Create keyspace/namespace

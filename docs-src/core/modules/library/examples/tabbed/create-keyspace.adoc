@@ -1,0 +1,56 @@
+[tabs]
+====
+CQL::
++
+--
+[source, cql, subs="attributes+"]
+----
+include::example$cql/create-keyspace.cql[]
+----
+--
+
+OSS REST::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$rest/create-keyspace.sh[]
+----
+--
+
+Astra REST::
++
+--
+[source,plaintext]
+----
+include::example$rest/astra-create-keyspace.sh[]
+----
+--
+
+OSS Doc API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$docapi/create-namespace.sh[]
+----
+--
+
+Astra Doc API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$docapi/astra-create-namespace.sh[]
+----
+--
+
+httpie::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$httpie/create-keyspace.http[]
+----
+--
+====

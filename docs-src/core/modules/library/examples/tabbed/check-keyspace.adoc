@@ -1,0 +1,56 @@
+[tabs]
+====
+CQL::
++
+--
+[source, cql, subs="attributes+"]
+----
+include::example$cql/check-keyspace.cql[]
+----
+--
+
+OSS REST::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$rest/check-keyspace.sh[]
+----
+--
+
+Astra REST::
++
+--
+[source,plaintext]
+----
+include::example$rest/astra-check-keyspace.sh[]
+----
+--
+
+OSS Doc API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$docapi/check-namespace.sh[]
+----
+--
+
+Astra Doc API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$docapi/astra-check-namespace.sh[]
+----
+--
+
+httpie::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$httpie/check-keyspace.http[]
+----
+--
+====
