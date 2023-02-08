@@ -1,0 +1,28 @@
+#include: ./antora-playbook.yml
+antora:
+  extensions:
+  - ./lib/compose-playbook.js
+  - ./lib/select-component-descriptor.js
+  - ./lib/inject-collector-config.js
+  - '@antora/collector-extension'
+  - '@antora/atlas-extension'
+
+site:
+  title: LLP Data Models
+  keys:
+    profile: library
+
+output:
+  dir: ./../build/site-library
+
+asciidoc:
+  attributes:
+    product: 'Astra DB Classic'
+    evalproduct: 'DB Classic'
+    shortproduct: 'classic'
+    serverless_special: ''
+    postman-base-url: 'https:/github.com/stargate/docs/blob/main/modules/developers-guide'
+
+ui:
+  bundle:
+    url: .

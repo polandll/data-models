@@ -1,0 +1,154 @@
+= Data model: library
+
+== Conceptual model
+
+=== Identify the entities, i.e., the data contained in the database.
+
+* Book
+* Reader
+* LibCollection
+* Magazine
+* Article
+* Address
+* Badge 
+* Review
+
+=== Identify the relationships between the entities.
+
+* Readers read Books
+* LibCollections consist of Books and Magazines
+* Articles are in Magazines
+* Readers have Addresses and Badges
+* Readers write Reviews
+
+=== Identify the constraints on the data.
+
+* None at this time
+
+image::conceptual-library.jpg[]
+
+Chen diagram above represents entities as rectangles, and attributes of those entities as ovals. Attributes that are unique identifiers for items are underlined. Relationships between entities are represented as diamonds, and the connectors between the relationship and each entity show the multiplicity of the connection.
+
+
+=== Defining queries
+
+What information do you need to get about the entities or their relationships?
+
+What is a reader's addresses?::
+Answer: unique reader -> retrieve addresses
+
+What is a reader's badge(s)?::
+Answer: unique reader -> retrieve badges 
+
+Does a reader have a particular badge?::
+Answer: unique reader + unique badge -> retrieve badge, if exists
+
+What books does a reader have checked out?::
+Answer: unique reader -> 
+
+What articles are in which magazines?::
+Answer: unique magazine -> retrieve articles
+
+What books are located in which LibCollections?::
+Answer: unique LibCollection -> retrieve books
+
+Is a particular book located in a LibCollection?::
+Answer unique Book -> ??
+
+What are all the books with a particular genre?::
+Answer: unique genre -> retrieve books with that genre in set
+
+What format is a book published in?::
+Answer: unique book -> retrieve set of formats
+
+== Logical model
+
+Design Cassandra tables, with one table for each query, capturing entities and relationships from the conceptual model.
+
+== Physical model
+
+Assign types to each item in the Cassandra tables, using CQL data types.
+
+image::physical-model.jpg[]
+
+=== Schema
+[tabs]
+====
+CQL::
++
+--
+[source, cql, subs="attributes+"]
+----
+include::example$cql/create-keyspace.cql[]
+----
+--
+
+OSS REST::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$rest/create-keyspace.sh[]
+----
+--
+
+Astra REST::
++
+--
+[source,plaintext]
+----
+curl --location --request POST 'https://{{ASTRA_DB_ID}}-{{ASTRA_DB_REGION}}.apps.astra.datastax.com:8180/v2/schemas/namespaces' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "test"
+}'
+
+----
+--
+
+OSS Doc API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$docapi/curl_check_ns_exists.sh[]
+----
+--
+
+Astra Doc API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$docapi/curl_check_ns_exists.sh[]
+----
+--
+
+httpie::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$docapi/curl_check_ns_exists.sh[]
+----
+--
+====
+
+Write schema for the tables to be created.
+* Create keyspace/namespace
+* Check keyspace/namespace existence
+* Delete keyspace/namespace
+* Create tables
+* Check table existence
+* Delete tables
+* Create UDTs
+* Check UDTs 
+* Delete UDTs
+* Create indexes
+* Check indexes
+* Delete indexes
+* Check indexes?
+
+=== Write CQL queries for the data to be retrieved.
+

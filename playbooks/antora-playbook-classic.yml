@@ -1,0 +1,28 @@
+#include: ./antora-playbook.yml
+antora:
+  extensions:
+  - ./lib/compose-playbook.js
+  - ./lib/select-component-descriptor.js
+  - ./lib/inject-collector-config.js
+  - '@antora/collector-extension'
+  - '@antora/atlas-extension'
+
+site:
+  title: DataStax Astra DB Classic Documentation
+  keys:
+    profile: classic
+
+output:
+  dir: ./../build/site-classic
+
+asciidoc:
+  attributes:
+    product: 'Astra DB Classic'
+    evalproduct: 'DB Classic'
+    shortproduct: 'classic'
+    serverless_special: ''
+    postman-base-url: 'https:/github.com/stargate/docs/blob/main/modules/developers-guide'
+
+ui:
+  bundle:
+    url: .

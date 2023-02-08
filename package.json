@@ -1,0 +1,28 @@
+{
+  "name": "data-models",
+  "scripts": {
+    "build:prod:classic": "npm run build:restapi && npm run build:restapiv1 && npm run build:docapi && npm run build:devopsapi && npm run build:publish:classic",
+    "build:prodlint:classic": "npm run build:oaslinter && npm run build:prod:classic",
+    "build:publish:classic": "antora --log-level error --fetch --clean playbooks/site-publish-classic.yaml",
+    "build:local:library": "antora --log-level error --stacktrace --fetch --clean playbooks/site-library.yml",
+    "build:oaslinter": "npx @redocly/cli lint api/StargateRESTv2.yaml && npx @redocly/cli lint api/StargateRESTv1.yaml && npx @redocly/cli lint api/StargateDocv2.yaml && npx @redocly/cli lint api/DevOpsv2.yaml",
+    "collector": "npm run collector:restapi && npm run collector:restapiv1 && npm run collector:docapi && npm run collector:devopsapi",
+    "collector:restapi": "redoc-cli build api/StargateRESTv2.yaml --output build/api/restv2.html",
+    "build:linkinator": "npx linkinator https://docs.datastax.com/en/astra/docs/ --recurse --skip ' https://localhost?'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polandll/data-models.git"
+  },
+  "dependencies": {
+    "@antora/atlas-extension": "1.0.0-alpha.1",
+    "@antora/cli": "~3.1",
+    "@antora/collector-extension": "1.0.0-alpha.2",
+    "@antora/site-generator": "~3.1",
+    "@redocly/cli": "1.0.0-beta.122",
+    "linkinator": "~3.0.3",
+    "redoc": "~2.0.0",
+    "redoc-cli": "~0.13.20",
+    "run": "^1.4.0"
+  }
+}

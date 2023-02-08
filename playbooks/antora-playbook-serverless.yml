@@ -1,0 +1,33 @@
+#include: ./antora-playbook.yml
+antora:
+  extensions:
+  - ./lib/compose-playbook.js
+  - ./lib/select-component-descriptor.js
+  - ./lib/inject-collector-config.js
+  - '@antora/collector-extension'
+  - '@antora/atlas-extension'
+
+site:
+  title: DataStax Astra DB Serverless Documentation
+  url: https://docs.datastax.com/en/astra/docs
+  keys:
+    profile: serverless
+    segmentIo: d24gQtyKIUu5mLdkp11xjfiXLhRqx0HH
+
+output:
+  dir: ./../build/site-serverless
+
+asciidoc:
+  attributes:
+    product: 'Astra DB Serverless'
+    evalproduct: 'DB Serverless'
+    shortproduct: 'serverless'
+    serverless_special: 'serverless,'
+    astra-docs: 'ssh://github.com/riptano/astra-docs.git'
+    dse68-docs: 'ssh://github.com/riptano/dse68-docs.git'
+    docs: 'ssh://github.com/stargate/docs.git'
+
+ui:
+  bundle:
+    url: .
+
