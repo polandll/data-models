@@ -150,6 +150,7 @@ asciidoc:
     dse68-docs: 'ssh://github.com/riptano/dse68-docs.git'
     docs: 'ssh://github.com/stargate/docs.git'
     migration-docs: 'ssh://github.com/datastax/migration-docs.git'
+    data-models: 'ssh://github.com/polandll/data-models.git'
 
   extensions:
   - ~/work/astra-docs/playbooks/lib/tabs-block.js
