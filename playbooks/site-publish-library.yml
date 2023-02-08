@@ -1,27 +1,25 @@
+#antora:
+#  extensions:
+#  - require: ./lib/select-component-descriptor.js
+#    default_profile: library
+#  - ./lib/inject-collector-config.js
+#  - '@antora/collector-extension'
+#  - '@antora/atlas-extension'
+
 site:
-  title: DataStax Astra DB Serverless Documentation
-  url: https://docs.datastax.com/en/astra-serverless
+  title: LLP Data Models
+#  keys:
+#    profile: library
 
 output:
-  # The output.dir in the site-local playbook should take the form
-  # "./../build/<docset-name>". The reason for this is because DataStax docs are
-  # often stored on separate branches of the same repo. Using the docset name
-  # for the output directory ensures that different docset builds within the
-  # same repo don't overwrite each other
-  dir: ./../build/astraserverless+stargate
+  dir: ~/work/data-models/build/site
 
 content:
   edit_url: false
   sources:
-  - url: ./../../migration-docs
+  - url: '~/work/data-models'
     branches: HEAD
-    start_path: docs-src/zdm-core
-  - url: ./../../stargate/docs
-    branches: [test-multi-repos]
-    start_path: docs-src/stargate-develop
-  - url: ./..
-    branches: HEAD
-    start_path: docs-src/astra-core
+    start_path: docs-src/core
 
 ui:
   bundle:
@@ -31,7 +29,7 @@ ui:
   # change the banner logo to something other than the default logo provided by
   # the UI bundle. NOTE: The non-default logo must be named "logo.svg" and be
   # located @ "playbooks/supplemental-ui/img/logo.svg".
-  #supplemental_files: ./supplemental-ui
+  #supplemental_files: ~/work/astra-docs/playbooks/supplemental-ui
   output_dir: assets
 
 asciidoc:
@@ -50,9 +48,11 @@ asciidoc:
     database: 'Astra DB'
     astra_db: 'Astra DB'
     astra_generic: 'Astra'
+    astra_ui: 'Astra Portal'
     classic: 'classic'
     classic_cap: 'Classic'
     serverless: 'serverless'
+    serverless_special: 'serverless,'
     serverless_cap: 'Serverless'
     astra_ethereum: 'DataStax Astra Block for Ethereum'
     astra_block: 'DataStax Astra Block'
@@ -85,6 +85,10 @@ asciidoc:
     ASTRA_USERNAME: 'polandll'
     ASTRA_PASSWORD: '12345abcd'
 
+    local-url: 'localhost'
+    local-port: ':8180'
+    local-rest-schema: '/v2/schemas/keyspaces'
+
     auth_token: '$ASTRA_DB_APPLICATION_TOKEN'
     base_auth_url: 'http://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com:8081'
     base_auth_api_path: '/v1/auth'
@@ -115,7 +119,7 @@ asciidoc:
     user2fn: 'Janesha'
     user2ln: 'Doesha'
 
-    namespace: 'myworld'
+    # namespace: 'myworld'
     collection: 'fitness'
     user1: 'Janet'
     user2: 'Joey'
@@ -125,6 +129,9 @@ asciidoc:
     gkeyspace: 'library'
     gtable1: 'book'
     gtable2: 'reader'
+
+    keyspace: 'test'
+    namespace: 'test'
 
     support_url: 'https://houston.datastax.com/hc/requests/new'
     astra_docs_base_url: 'https://docs.datastax.com/en/astra/docs'
@@ -136,5 +143,13 @@ asciidoc:
     # page for "agent": {glossary-url}agent[agent,window="_blank"]
     glossary-url: 'https://docs.datastax.com/en/glossary/docs/index.html#'
 
+    # Bsys requires the URLs of the content source repos of the current docset
+    # to be listed as attributes in the site-publish playbook in the form
+    # "<repo-name>: 'ssh://github.com/<org-name>/<repo-name>.git'".
+    astra-docs: 'ssh://github.com/riptano/astra-docs.git'
+    dse68-docs: 'ssh://github.com/riptano/dse68-docs.git'
+    docs: 'ssh://github.com/stargate/docs.git'
+    migration-docs: 'ssh://github.com/datastax/migration-docs.git'
+
   extensions:
-  - ./lib/tabs-block.js
+  - ~/work/astra-docs/playbooks/lib/tabs-block.js

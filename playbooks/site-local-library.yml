@@ -1,64 +1,49 @@
-site:
-  title: DataStax Astra DB Documentation
-  url: https://docs.datastax.com/en/astra/docs
+#antora:
+#  extensions:
+#  - require: ./lib/select-component-descriptor.js
+#    default_profile: library
+#  - ./lib/inject-collector-config.js
+#  - '@antora/collector-extension'
+#  - '@antora/atlas-extension'
 
-output: 
-  dir: '~/work/astra-docs/build/site'
+site:
+  title: LLP Data Models
+#  keys:
+#    profile: library
+
+output:
+  dir: ./../build/site-library
 
 content:
   edit_url: ~
   sources:
-  - url: '~/work/astra-docs'
-    branches: [main]  
-    start_path: docs-src/astra-develop
-  - url: '~/work/astra-docs'
-    branches: [main]
-    start_path: docs-src/astra-core
+  - url: ./..
+    branches: HEAD
+    start_paths: docs-src/core
 
 ui:
   bundle:
-    url: 'https://github.com/riptano/antora-ui-docs/raw/main/releases/download/v0.8/ui-bundle.zip'
+    url: https://github.com/riptano/antora-ui-docs/releases/latest/download/ui-bundle.zip
     snapshot: true
-  # LLP WILL NEED TO FIGURE OUT SUPPLEMENTAL FOR DIFF ASTRA PRODUCTS  
-  supplemental_files: '~/work/astra-docs/playbooks/supplemental-ui'
+  supplemental_files: ./supplemental-ui
   output_dir: assets
 
 asciidoc:
   attributes:
-    source-highlighter: highlightjs
     page-pagination: ''
     sectanchors: ''
     sectlinks: ''
-    # id-prefix: ''
-    # id-separator: '-'
-    company: 'DataStax'
-    product: 'Astra DB'
-    database: 'Astra DB'
-    astra_db: 'Astra DB'
-    astra_generic: 'Astra'
-    classic: 'classic'
-    classic_cap: 'Classic'
-    serverless: 'serverless'
-    serverless_cap: 'Serverless'
-    astra_stream: 'Astra Streaming'
-    advanced: 'no'
-
-    stargate-docker-tag: v1.0.41
-    stargate-docker-tag-3x: v1.0.41
-    stargate-docker-tag-40: v1.0.41
-    stargate-docker-tag-68: v1.0.40
-    cass-tag-3x: '3.11'
-    cass-alt-tag-3x: '3_11'
-    cass-tag-40: '4.0'
-    cass-alt-tag-40: '4_0'
-    dse-server-tag-68: '6.8.9'
-    dse-tag-68: '6.8'
-    dse-alt-tag-68: '68'
+    id-prefix: ''
+    id-separator: '-'
 
     ASTRA_CLUSTER_ID: '8319febd-e7cf-4595-81e3-34f45d332d2a'
     ASTRA_REGION: 'us-east1'
     ASTRA_USERNAME: 'polandll'
     ASTRA_PASSWORD: '12345abcd'
+
+    local-url: 'localhost'
+    local-port: ':8180'
+    local-rest-schema: '/v2/schemas/keyspaces'
 
     auth_token: '$ASTRA_DB_APPLICATION_TOKEN'
     base_auth_url: 'http://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com:8081'
@@ -69,7 +54,7 @@ asciidoc:
     base_rest_url: 'https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com'
     base_doc_url: 'https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com'
     base_graphql_url: 'https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com:8080'
-    
+
     base_rest_schema: '/api/rest/v2/schemas/keyspaces'
     base_doc_schema: '/api/rest/v2/schemas/namespaces'
     base_gql_schema: '/api/graphql-schema'
@@ -90,7 +75,7 @@ asciidoc:
     user2fn: 'Janesha'
     user2ln: 'Doesha'
 
-    namespace: 'myworld'
+    # namespace: 'myworld'
     collection: 'fitness'
     user1: 'Janet'
     user2: 'Joey'
@@ -103,13 +88,9 @@ asciidoc:
 
     support_url: 'https://houston.datastax.com/hc/requests/new'
     astra_docs_base_url: 'https://docs.datastax.com/en/astra/docs'
-    
-    astra-docs: 'ssh://github.com/riptano/astra-docs.git'
-    dse68-docs: 'ssh://github.com/riptano/dse68-docs.git'
-    docs: 'ssh://github.com/stargate/docs.git'
 
-    postman-base-url: 'https:/github.com/stargate/docs/blob/main/modules/developers-guide'
-    # change postman-base-url to 'https:/github.com/stargate/docs/blob/main/docs-src/stargate-develop/modules/develop' after test-multi-repos merge
+    keyspace: 'test'
+    namespace: 'test'
 
   extensions:
-  - '~/work/astra-docs/playbooks/lib/tabs-block.js'
+  - ./lib/tabs-block.js
