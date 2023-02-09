@@ -4,14 +4,14 @@
 
 === Identify the entities, i.e., the data contained in the database.
 
-* Book
-* Reader
+* Book: something to be read
+* Reader: someone who can read
 * LibCollection
-* Magazine
-* Article
-* Address
-* Badge 
-* Review
+* Magazine: something to be read that is not a book
+* Article: something that is included in a magazine
+* Address: a location where a reader lives
+* Badge: something that a reader can earn
+* Review: something that a reader can write about a book
 
 === Identify the relationships between the entities.
 
@@ -27,8 +27,8 @@
 
 image::conceptual-library.jpg[]
 
-Chen diagram above represents entities as rectangles, and attributes of those entities as ovals. Attributes that are unique identifiers for items are underlined. Relationships between entities are represented as diamonds, and the connectors between the relationship and each entity show the multiplicity of the connection.
-
+Chen diagram above represents entities as rectangles, and attributes of those entities as ovals. Attributes that are unique identifiers for items are underlined. 
+Relationships between entities are represented as diamonds, and the connectors between the relationship and each entity show the multiplicity of the connection.
 
 === Defining queries
 
