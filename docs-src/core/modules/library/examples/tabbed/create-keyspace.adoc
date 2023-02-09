@@ -44,6 +44,23 @@ Astra Doc API::
 include::example$docapi/astra-create-namespace.sh[]
 ----
 --
+OSS GraphQL API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$graphql/create-namespace.sh[]
+----
+--
+
+Astra GraphQL API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$graphql/astra-create-namespace.sh[]
+----
+--
 
 httpie::
 +
