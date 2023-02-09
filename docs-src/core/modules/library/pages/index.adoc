@@ -1,5 +1,22 @@
 = Data model: library
 
+This data model uses the concept of libraries that have books and magazines. 
+A library may hold a particular collection of books and/or magazines.
+Readers can check out books or magazines, review books, and earn badges as a reader/editor/review writer.
+Readers also have addresses.
+
+Typical data types that are in use in most data models, such as text, UUIDs, and integers are easy to use for columns in this data model.
+Users can have unique user-ids that are UUIDs, names are text, and the month that a particular magazine is published can be an integer.
+Birthdates, used perhaps for special privileges or gifts, can use the date data type.
+Checkout dates for books can use the timestamp data type.
+Book genre is a good example of a set, whereas the authors of a book are a good example of a list (ordered set).
+Reader badges can be stored in a map, where the key is the level of badge and and the value is the date of earning the level.
+The countries that a reader has lived in can provide a vehicle  for using tuples, to store the country name, and arrival and departure dates.
+Reviews and addresses are excellent examples of user-defined types (UDTs).
+
+In short, many of the data types can be incorporated into this data model, so that all usage of the data types available to our many interfaces to Cassandra can be shown.
+
+
 == Conceptual model
 
 === Identify the entities, i.e., the data contained in the database.
@@ -63,6 +80,9 @@ Answer: unique book -> retrieve set of formats
 
 == Logical model
 
+// LLP, 02.08.23 Perhaps the one table per query is no longer the best model?
+//  With the more common use of indexes, maybe it doesn't matter as much?
+
 Design Cassandra tables, with one table for each query, capturing entities and relationships from the conceptual model.
 
 == Physical model
@@ -87,16 +107,15 @@ include::example$tabbed/delete-keyspace.adoc[]
 
 ==== *Create table*
 
-==== *Create tables*
 ==== *Check table existence*
-==== *Delete tables*
-==== *Create UDTs*
-==== *Check UDTs*
-==== *Delete UDTs*
-==== *Create indexes*
-==== *Check indexes*
-==== *Delete indexes*
-==== *Check indexes?*
+==== *Delete table*
+==== *Create UDT*
+==== *Check UDT*
+==== *Delete UDT*
+==== *Create index*
+==== *Check index*
+==== *Delete index*
+==== *Check index?*
 
 === Write CQL queries for the data to be retrieved.
 
