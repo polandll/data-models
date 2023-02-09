@@ -117,5 +117,5 @@ include::example$tabbed/delete-keyspace.adoc[]
 ==== *Delete index*
 ==== *Check index?*
 
-=== Write CQL queries for the data to be retrieved.
+=== Queries to write/read data
 

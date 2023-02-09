@@ -49,7 +49,7 @@ OSS GraphQL API::
 --
 [source, shell, subs="attributes+"]
 ----
-include::example$graphql/create-namespace.sh[]
+include::example$graphql/create-keyspace-cql1st.gql[]
 ----
 --
 
