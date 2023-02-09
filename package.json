@@ -2,7 +2,7 @@
   "name": "data-models",
   "scripts": {
     "build:prod:data-models": "npm run build:publish:data-models",
-    "build:publish:data-models": "antora --log-level error --stacktrace --fetch --clean playbooks/site-publish-data-models.yml",
+    "build:publish:data-models": "antora --log-level error --stacktrace --fetch --clean playbooks/site-publish-data-models.yaml",
     "build:local:data-models": "antora --log-level error --stacktrace --fetch --clean playbooks/site-local-data-models.yml",
     "build:prod:classic": "npm run build:restapi && npm run build:restapiv1 && npm run build:docapi && npm run build:devopsapi && npm run build:publish:classic",
     "build:prodlint:classic": "npm run build:oaslinter && npm run build:prod:classic",
