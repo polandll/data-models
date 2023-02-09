@@ -1,0 +1,56 @@
+[tabs]
+====
+CQL::
++
+--
+[source, cql, subs="attributes+"]
+----
+include::example$cql/delete-keyspace.cql[]
+----
+--
+
+OSS REST::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$rest/delete-keyspace.sh[]
+----
+--
+
+Astra REST::
++
+--
+[source,plaintext]
+----
+include::example$rest/astra-delete-keyspace.sh[]
+----
+--
+
+OSS Doc API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$docapi/delete-namespace.sh[]
+----
+--
+
+Astra Doc API::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$docapi/astra-delete-namespace.sh[]
+----
+--
+
+httpie::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::example$httpie/delete-keyspace.http[]
+----
+--
+====

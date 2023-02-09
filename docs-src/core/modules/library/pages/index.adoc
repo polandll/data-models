@@ -83,22 +83,20 @@ include::example$tabbed/check-keyspace.adoc[]
 
 ==== *Delete keyspace/namespace*
 
+include::example$tabbed/delete-keyspace.adoc[]
+
 ==== *Create table*
 
-Write schema for the tables to be created.
-* Create keyspace/namespace
-* Check keyspace/namespace existence
-* Delete keyspace/namespace
-* Create tables
-* Check table existence
-* Delete tables
-* Create UDTs
-* Check UDTs 
-* Delete UDTs
-* Create indexes
-* Check indexes
-* Delete indexes
-* Check indexes?
+==== *Create tables*
+==== *Check table existence*
+==== *Delete tables*
+==== *Create UDTs*
+==== *Check UDTs*
+==== *Delete UDTs*
+==== *Create indexes*
+==== *Check indexes*
+==== *Delete indexes*
+==== *Check indexes?*
 
 === Write CQL queries for the data to be retrieved.
 
