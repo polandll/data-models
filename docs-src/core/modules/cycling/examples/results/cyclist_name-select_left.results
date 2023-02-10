@@ -1,0 +1,11 @@
+ cycling.left(firstname, 1) | lastname
+----------------------------+-----------------
+                          A |           FRAME
+                       null |        MATTHEWS
+                       null |             VOS
+                          P |       TIRALONGO
+                          M |             VOS
+                          S |      KRUIKSWIJK
+                          A | VAN DER BREGGEN
+
+(7 rows)

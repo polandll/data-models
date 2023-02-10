@@ -1,0 +1,39 @@
+// tag::rAVG[]
+average
+---------
+  11474
+
+(1 rows)
+// end::rAVG[]
+
+// tag::rCOUNT[]
+row_count
+-----------
+        3
+
+(1 rows)
+// end::rCOUNT[]
+
+// tag::rMIN[]
+fastest
+---------
+  11449
+
+(1 rows)
+// end::rMIN[]
+
+// tag::rMAX[]
+slowest
+---------
+  11490
+
+(1 rows)
+// end::rMAX[]
+
+// tag::rSUM[]
+total_time
+------------
+     34424
+
+(1 rows)
+// end::rSUM[]

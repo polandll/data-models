@@ -1,0 +1,6 @@
+ cid                                  | country   | birthday   | age | name
+--------------------------------------+-----------+------------+-----+-----------------
+ 1c526849-d3a2-42a3-bcf9-7903c80b3d16 | Australia | 1998-12-23 |  19 |   Kanden GROVES
+ 96c4c40d-58c8-4710-b73f-681e9b1f70ae | Australia | 1989-04-20 |  29 | Benjamin DYBALL
+
+(2 rows)

@@ -12,7 +12,7 @@ site:
 #    profile: library
 
 output:
-  dir: ./../build/site-library
+  dir: ./../build/site
 
 content:
   edit_url: ~
@@ -89,8 +89,8 @@ asciidoc:
     support_url: 'https://houston.datastax.com/hc/requests/new'
     astra_docs_base_url: 'https://docs.datastax.com/en/astra/docs'
 
-    keyspace: 'test'
-    namespace: 'test'
+    keyspace: 'library'
+    namespace: 'library'
 
   extensions:
   - ./lib/tabs-block.js

@@ -1,0 +1,17 @@
+@ Row 1
+----------------------+------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------
+ keyspace_name        | cycling
+ function_name        | avgfinal
+ argument_types       | ['frozen<tuple<int, bigint>>']
+ argument_names       | ['state']
+ body                 | \n      double r = 0; \n      if (state.getInt(0) == 0) return null; \n      r = state.getLong(1); \n      r /= s
+tate.getInt(0); \n      return Double.valueOf(r);\n    
+ called_on_null_input | True
+ deterministic        | False
+ language             | java
+ monotonic            | False
+ monotonic_on         | []
+ return_type          | double
+
+(1 rows)

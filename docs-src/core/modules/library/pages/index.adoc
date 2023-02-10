@@ -16,106 +16,14 @@ Reviews and addresses are excellent examples of user-defined types (UDTs).
 
 In short, many of the data types can be incorporated into this data model, so that all usage of the data types available to our many interfaces to Cassandra can be shown.
 
+include::page$conceptual-library.adoc[leveloffset="+1"]
 
-== Conceptual model
+include::page$logical-library.adoc[leveloffset="+1"]
 
-=== Identify the entities, i.e., the data contained in the database.
+include::page$physical-library.adoc[leveloffset="+1"]
 
-* Book: something to be read
-* Reader: someone who can read
-* LibCollection
-* Magazine: something to be read that is not a book
-* Article: something that is included in a magazine
-* Address: a location where a reader lives
-* Badge: something that a reader can earn
-* Review: something that a reader can write about a book
+include::page$schema-library.adoc[leveloffset="+2"]
 
-=== Identify the relationships between the entities.
+include::page$queries-library.adoc[leveloffset="+2"]
 
-* Readers read Books
-* LibCollections consist of Books and Magazines
-* Articles are in Magazines
-* Readers have Addresses and Badges
-* Readers write Reviews
-
-=== Identify the constraints on the data.
-
-* None at this time
-
-image::conceptual-library.jpg[]
-
-Chen diagram above represents entities as rectangles, and attributes of those entities as ovals. Attributes that are unique identifiers for items are underlined. 
-Relationships between entities are represented as diamonds, and the connectors between the relationship and each entity show the multiplicity of the connection.
-
-=== Defining queries
-
-What information do you need to get about the entities or their relationships?
-
-What is a reader's addresses?::
-Answer: unique reader -> retrieve addresses
-
-What is a reader's badge(s)?::
-Answer: unique reader -> retrieve badges 
-
-Does a reader have a particular badge?::
-Answer: unique reader + unique badge -> retrieve badge, if exists
-
-What books does a reader have checked out?::
-Answer: unique reader -> 
-
-What articles are in which magazines?::
-Answer: unique magazine -> retrieve articles
-
-What books are located in which LibCollections?::
-Answer: unique LibCollection -> retrieve books
-
-Is a particular book located in a LibCollection?::
-Answer unique Book -> ??
-
-What are all the books with a particular genre?::
-Answer: unique genre -> retrieve books with that genre in set
-
-What format is a book published in?::
-Answer: unique book -> retrieve set of formats
-
-== Logical model
-
-// LLP, 02.08.23 Perhaps the one table per query is no longer the best model?
-//  With the more common use of indexes, maybe it doesn't matter as much?
-
-Design Cassandra tables, with one table for each query, capturing entities and relationships from the conceptual model.
-
-== Physical model
-
-Assign types to each item in the Cassandra tables, using CQL data types.
-
-image::physical-model.jpg[]
-
-=== Schema
-
-==== *Create keyspace/namespace*
-
-include::example$tabbed/create-keyspace.adoc[]
-
-==== *Check keyspace/namespace existence*
-
-include::example$tabbed/check-keyspace.adoc[]
-
-==== *Delete keyspace/namespace*
-
-include::example$tabbed/delete-keyspace.adoc[]
-
-==== *Create table*
-
-==== *Check table existence*
-==== *Delete table*
-==== *Create UDT*
-==== *Check UDT*
-==== *Delete UDT*
-==== *Create index*
-==== *Check index*
-==== *Delete index*
-==== *Check index?*
-
-=== Queries to write/read data
-
+include::page$sample-data-library.adoc[leveloffset="+1"]

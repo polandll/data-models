@@ -5,3 +5,5 @@ version: ~
 nav:
 
 - modules/library/nav.adoc
+- modules/cycling/nav.adoc
+# - modules/food/nav.adoc

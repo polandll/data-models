@@ -1,0 +1,5 @@
+= Physical model
+
+Assign types to each item in the Cassandra tables, using CQL data types.
+
+image::physical-model.jpg[]

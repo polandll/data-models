@@ -1,0 +1,8 @@
+@ Row 1
+---------------+-------------------------------------------------
+ keyspace_name | cycling
+ type_name     | basic_info
+ field_names   | ['birthday', 'nationality', 'height', 'weight']
+ field_types   | ['timestamp', 'text', 'text', 'text']
+
+(1 rows)

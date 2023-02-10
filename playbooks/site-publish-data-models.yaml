@@ -130,8 +130,8 @@ asciidoc:
     gtable1: 'book'
     gtable2: 'reader'
 
-    keyspace: 'test'
-    namespace: 'test'
+    keyspace: 'library'
+    namespace: 'library'
 
     support_url: 'https://houston.datastax.com/hc/requests/new'
     astra_docs_base_url: 'https://docs.datastax.com/en/astra/docs'

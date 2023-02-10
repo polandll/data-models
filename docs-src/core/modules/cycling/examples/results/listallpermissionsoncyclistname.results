@@ -1,0 +1,39 @@
+ role          | username      | resource                     | permission | granted | restricted | grantable
+---------------+---------------+------------------------------+------------+---------+------------+-----------
+     cassandra |     cassandra |           <keyspace cycling> |     CREATE |    True |      False |     False
+     cassandra |     cassandra |           <keyspace cycling> |      ALTER |    True |      False |     False
+     cassandra |     cassandra |           <keyspace cycling> |       DROP |    True |      False |     False
+     cassandra |     cassandra |           <keyspace cycling> |     SELECT |    True |      False |     False
+     cassandra |     cassandra |           <keyspace cycling> |     UPDATE |    True |      False |     False
+     cassandra |     cassandra |           <keyspace cycling> |  AUTHORIZE |    True |      False |     False
+     cassandra |     cassandra |           <keyspace cycling> |   DESCRIBE |    True |      False |     False
+     cassandra |     cassandra | <table cycling.cyclist_name> |      ALTER |    True |      False |     False
+     cassandra |     cassandra | <table cycling.cyclist_name> |       DROP |    True |      False |     False
+     cassandra |     cassandra | <table cycling.cyclist_name> |     SELECT |    True |      False |     False
+     cassandra |     cassandra | <table cycling.cyclist_name> |     UPDATE |    True |      False |     False
+     cassandra |     cassandra | <table cycling.cyclist_name> |  AUTHORIZE |    True |      False |     False
+         coach |         coach |           <keyspace cycling> |      ALTER |    True |      False |     False
+         coach |         coach |           <keyspace cycling> |     SELECT |    True |      False |     False
+         coach |         coach |           <keyspace cycling> |     UPDATE |    True |      False |     False
+ cycling_admin | cycling_admin |           <keyspace cycling> |     CREATE |    True |      False |     False
+ cycling_admin | cycling_admin |           <keyspace cycling> |      ALTER |    True |      False |     False
+ cycling_admin | cycling_admin |           <keyspace cycling> |       DROP |    True |      False |     False
+ cycling_admin | cycling_admin |           <keyspace cycling> |     SELECT |    True |      False |     False
+ cycling_admin | cycling_admin |           <keyspace cycling> |     UPDATE |    True |      False |     False
+ cycling_admin | cycling_admin |           <keyspace cycling> |  AUTHORIZE |    True |      False |     False
+ cycling_admin | cycling_admin |           <keyspace cycling> |   DESCRIBE |    True |      False |     False
+      db_admin |      db_admin |           <keyspace cycling> |     SELECT |   False |       True |     False
+      db_admin |      db_admin |           <keyspace cycling> |     UPDATE |   False |       True |     False
+       dbadmin |       dbadmin |              <all keyspaces> |     CREATE |    True |      False |     False
+       dbadmin |       dbadmin |              <all keyspaces> |      ALTER |    True |      False |     False
+       dbadmin |       dbadmin |              <all keyspaces> |       DROP |    True |      False |     False
+       dbadmin |       dbadmin |              <all keyspaces> |     SELECT |    True |      False |     False
+       dbadmin |       dbadmin |              <all keyspaces> |     UPDATE |    True |      False |     False
+       dbadmin |       dbadmin |              <all keyspaces> |  AUTHORIZE |    True |      False |     False
+       dbadmin |       dbadmin |              <all keyspaces> |   DESCRIBE |    True |      False |     False
+    role_admin |    role_admin |           <keyspace cycling> |     SELECT |   False |       True |     False
+    role_admin |    role_admin |           <keyspace cycling> |     UPDATE |   False |       True |     False
+           sam |           sam |           <keyspace cycling> |     SELECT |   False |      False |      True
+           sam |           sam |           <keyspace cycling> |     UPDATE |   False |      False |      True
+
+(35 rows)

@@ -1,0 +1,6 @@
+= Logical model
+
+// LLP, 02.08.23 Perhaps the one table per query is no longer the best model?
+//  With the more common use of indexes, maybe it doesn't matter as much?
+
+Design Cassandra tables, with one table for each query, capturing entities and relationships from the conceptual model.

@@ -1,0 +1,25 @@
+= Schema
+
+== *Create keyspace/namespace*
+
+include::example$tabbed/create-keyspace.adoc[]
+
+== *Check keyspace/namespace existence*
+
+include::example$tabbed/check-keyspace.adoc[]
+
+== *Delete keyspace/namespace*
+
+include::example$tabbed/delete-keyspace.adoc[]
+
+== *Create table*
+
+== *Check table existence*
+== *Delete table*
+== *Create UDT*
+== *Check UDT*
+== *Delete UDT*
+== *Create index*
+== *Check index*
+== *Delete index*
+== *Check index?*

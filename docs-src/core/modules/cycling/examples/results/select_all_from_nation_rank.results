@@ -1,0 +1,8 @@
+ nation  | info
+---------+---------------------------------
+   Spain | (1, 'Alejandro VALVERDE', 9054)
+ Belgium |  (3, 'Phillippe GILBERT', 6222)
+  France |   (2, 'Sylvain CHAVANEL', 6339)
+   Italy |   (4, 'Davide REBELLINI', 6090)
+
+(4 rows)

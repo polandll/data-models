@@ -1,0 +1,15 @@
+/*
+Warning: Table system_views.sstable_tasks is a virtual table and cannot be recreated with CQL.
+Structure, for reference:
+VIRTUAL TABLE system_views.sstable_tasks (
+    keyspace_name text,
+    table_name text,
+    task_id uuid,
+    kind text,
+    progress bigint,
+    total bigint,
+    unit text,
+    PRIMARY KEY (keyspace_name, table_name, task_id)
+) WITH CLUSTERING ORDER BY (table_name ASC, task_id ASC)
+    AND comment = 'current sstable tasks';
+*/

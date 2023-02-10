@@ -1,0 +1,5 @@
+ peer           | data_center | dse_version | graph
+----------------+-------------+-------------+-------
+  10.10.100.110 |   Cassandra |       6.7.0 | False
+
+(1 rows)

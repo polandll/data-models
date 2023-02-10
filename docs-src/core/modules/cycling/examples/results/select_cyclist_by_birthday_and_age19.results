@@ -1,0 +1,6 @@
+ cid                                  | birthday   | age | country    | name
+--------------------------------------+------------+-----+------------+---------------------
+ 410919ef-bd1b-4efa-8256-b0fd8ab67029 | 1999-01-04 |  19 | Uzbekistan | Iskandarbek SHODIEV
+ 1c526849-d3a2-42a3-bcf9-7903c80b3d16 | 1998-12-23 |  19 |  Australia |       Kanden GROVE
+
+(2 rows)

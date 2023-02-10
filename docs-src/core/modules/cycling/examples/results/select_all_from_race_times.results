@@ -1,0 +1,5 @@
+ race_date  | race_name                   | cyclist_name | finish_time | race_time
+------------+-----------------------------+--------------+-------------+--------------------
+ 2017-04-14 | 17th Santos Tour Down Under | Rohan DENNIS | 2h5m22s14ms | 19:15:18.000000000
+
+(1 rows)

@@ -1,0 +1,60 @@
+= Conceptual model
+
+== Identify the entities, i.e., the data contained in the database.
+
+* Cyclist: someone who can ride
+* Race: somethign that a cyclist can ride in
+// * LibCollection
+// * Magazine: something to be read that is not a book
+// * Article: something that is included in a magazine
+// * Address: a location where a reader lives
+// * Badge: something that a reader can earn
+// * Review: something that a reader can write about a book
+
+== Identify the relationships between the entities.
+
+* Cyclists ride in Races
+// * LibCollections consist of Books and Magazines
+// * Articles are in Magazines
+// * Readers have Addresses and Badges
+// * Readers write Reviews
+
+== Identify the constraints on the data.
+
+* None at this time
+
+image::conceptual-cycling.jpg[]
+
+Chen diagram above represents entities as rectangles, and attributes of those entities as ovals. Attributes that are unique identifiers for items are underlined. 
+Relationships between entities are represented as diamonds, and the connectors between the relationship and each entity show the multiplicity of the connection.
+
+== Defining queries
+
+What information do you need to get about the entities or their relationships?
+
+What is a cyclist's age?::
+Answer: unique cyclist -> retrieve age
+
+// What is a reader's badge(s)?::
+// Answer: unique reader -> retrieve badges 
+
+// Does a reader have a particular badge?::
+// Answer: unique reader + unique badge -> retrieve badge, if exists
+
+// What books does a reader have checked out?::
+// Answer: unique reader -> 
+
+// What articles are in which magazines?::
+// Answer: unique magazine -> retrieve articles
+
+// What books are located in which LibCollections?::
+// Answer: unique LibCollection -> retrieve books
+
+// Is a particular book located in a LibCollection?::
+// Answer unique Book -> ??
+
+// What are all the books with a particular genre?::
+// Answer: unique genre -> retrieve books with that genre in set
+
+// What format is a book published in?::
+// Answer: unique book -> retrieve set of formats

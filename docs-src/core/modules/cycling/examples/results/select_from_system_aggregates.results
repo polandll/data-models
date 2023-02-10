@@ -1,0 +1,13 @@
+@ Row 1
+----------------+----------------------------
+ keyspace_name  | cycling
+ aggregate_name | average
+ argument_types | ['int']
+ deterministic  | False
+ final_func     | avgfinal
+ initcond       | (0, 0)
+ return_type    | double
+ state_func     | avgstate
+ state_type     | frozen<tuple<int, bigint>>
+
+(1 rows)

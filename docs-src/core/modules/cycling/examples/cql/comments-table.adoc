@@ -1,0 +1,327 @@
+= comments
+
+Example for count, timestamps, limiting results by partition.
+
+Example for count, timestamps, limiting results by partition.
+
+[source,language-cql]
+----
+SOURCE '0_create_keyspace.cql';
+
+// START-drop
+DROP TABLE IF EXISTS cycling.comments;
+//END-drop
+
+/* Support fast retrieval of first record on each partition
+   and show upserts of timestamp type fields */
+
+// START-comments-table
+CREATE TABLE IF NOT EXISTS cycling.comments (
+  record_id timeuuid,
+  id uuid,
+  commenter text,
+  comment text,
+  created_at timestamp,
+  PRIMARY KEY (id, created_at)
+)
+WITH CLUSTERING ORDER BY (created_at DESC);
+// END-comments-table
+
+DROP INDEX IF EXISTS cycling.fn_sparse;
+
+// START-fn_sparse
+CREATE CUSTOM INDEX IF NOT EXISTS fn_sparse
+ON cycling.comments (created_at)
+USING 'org.apache.cassandra.index.sasi.SASIIndex'
+WITH OPTIONS = { 'mode': 'SPARSE' };
+// END-fn_sparse
+
+// START-insertall
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), e7ae5cf3-d358-4d99-b900-85902fda9bb0, '2017-02-14 12:43:20-0800', 'Raining too hard should have postponed', 'Alex');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), e7ae5cf3-d358-4d99-b900-85902fda9bb0, '2017-02-14 12:43:20.234-0800', 'Raining too hard should have postponed', 'Alex');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), e7ae5cf3-d358-4d99-b900-85902fda9bb0, '2017-03-21 13:11:09.999-0800', 'Second rest stop was out of water', 'Alex');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), e7ae5cf3-d358-4d99-b900-85902fda9bb0, '2017-04-01 06:33:02.16-0800', 'LATE RIDERS SHOULD NOT DELAY THE START', 'Alex');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), c7fceba0-c141-4207-9494-a29f9809de6f, totimestamp(now()), 'The gift certificate for winning was the best', 'Amy');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), c7fceba0-c141-4207-9494-a29f9809de6f, '2017-02-17 12:43:20.234+0400', 'Glad you ran the race in the rain', 'Amy');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), c7fceba0-c141-4207-9494-a29f9809de6f, '2017-03-22 5:16:59.001+0400', 'Great snacks at all reststops', 'Amy');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), c7fceba0-c141-4207-9494-a29f9809de6f, '2017-04-01 17:43:08.030+0400', 'Last climb was a killer', 'Amy');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 8566eb59-07df-43b1-a21b-666a3c08c08a, totimestamp(now()), 'Fastest womens time ever way to go amy!', 'Maryanne');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 8566eb59-07df-43b1-a21b-666a3c08c08a, '2017-02-13 11:20:17.020-0600', 'Great race on a crappy day', 'Maryanne');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 8566eb59-07df-43b1-a21b-666a3c08c08a, '2017-03-20 15:45:10.101-0600', 'Saggers really rocked it', 'Maryanne');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 8566eb59-07df-43b1-a21b-666a3c08c08a, '2017-04-14 05:16:52.009-0600', 'Not bad for a flatlander', 'Maryanne');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), fb372533-eb95-4bb4-8685-6ef61e994caa, totimestamp(now()), 'Great course', 'Michael');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), fb372533-eb95-4bb4-8685-6ef61e994caa, '2017-02-15 18:22:11-0800', 'Some entries complain a lot', 'Michael');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), fb372533-eb95-4bb4-8685-6ef61e994caa, '2017-03-16 19:43:01.030-0800', 'Getting read for the race', 'Michael');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), fb372533-eb95-4bb4-8685-6ef61e994caa, '2017-03-22 1:19:44.060-0800', 'Awesome race glad you held it anyway', 'Michael');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), fb372533-eb95-4bb4-8685-6ef61e994caa, '2017-04-07 11:21:14.001-0800', 'Thanks for waiting for me!', 'Michael');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 9011d3be-d35c-4a8d-83f7-a3c543789ee7, totimestamp(now()), 'Can''t wait for the next race', 'Katarzyna');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 9011d3be-d35c-4a8d-83f7-a3c543789ee7, '2017-01-01 11:20:17.020-0600', 'Gearing up for the seaon', 'Katarzyna');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 5b6962dd-3f90-4c93-8f61-eabfa4a803e2, totimestamp(now()), 'Thanks for all your hard work', 'Marianne');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 220844bf-4860-49d6-9a4b-6b5d3a79cbfb, totimestamp(now()), 'A for effort!', 'Paolo');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), c4b65263-fe58-4846-83e8-f0e1c13d518f, totimestamp(now()), 'Closing ceremony was a little lame', 'Rossella');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 38ab64b6-26cc-4de9-ab28-c257cf011659, totimestamp(now()), 'Next time guys!', 'Marcia');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 38ab64b6-26cc-4de9-ab28-c257cf011659, '2017-02-11 22:09:56+0800', 'First race was amazing, can''t wait for more', 'Marcia');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 6ab09bec-e68e-48d9-a5f8-97e6fb4c9b47, totimestamp(now()), 'So many great races thanks y''all', 'Steven');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 6ab09bec-e68e-48d9-a5f8-97e6fb4c9b47, '2017-02-02 09:49:00.02+0800', 'Best of luck everybody I can''t make it', 'Steven');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 6ab09bec-e68e-48d9-a5f8-97e6fb4c9b47, '2017-04-05 12:01:00.003', 'Bike damaged in transit bummer', 'Steven');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), e7cd5752-bc0d-4157-a80f-7523add8dbcd, totimestamp(now()), 'Go team, you rocked it', 'Anna');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 6d5f1663-89c0-45fc-8cfd-60a373b01622, totimestamp(now()), 'Next year the tour of california!', 'Melissa');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 95addc4c-459e-4ed7-b4b5-472f19a67995, totimestamp(now()), 'Next year for sure!', 'Vera');
+INSERT INTO cycling.comments (record_id, id, created_at, comment, commenter) VALUES (now(), 95addc4c-459e-4ed7-b4b5-472f19a67995, '2017-02-13 11:40:16.123-0600', 'I can do without the rain@@@@', 'Vera');
+// END-insertall
+
+CAPTURE 'select_from_comments.results';
+// START-select
+SELECT *
+FROM cycling.comments
+WHERE created_at < '2017-02-13 11:40:16.123';
+// END-select
+CAPTURE OFF;
+
+// START-alt
+ALTER TABLE cycling.comments
+WITH compression = {
+  'sstable_compression' : 'DeflateCompressor',
+  'chunk_length_kb' : 64
+};
+// END-alt
+
+// START-cache
+ALTER TABLE cycling.comments
+WITH caching = {
+  'keys' : 'NONE',
+  'rows_per_partition' : 10
+};
+// END-cache
+
+// START-nocompact
+ALTER TABLE cycling.comments
+WITH COMPACTION = {
+  'class' : 'SizeTieredCompactionStrategy',
+  'enabled' : 'false'
+};
+// END-nocompact
+
+// START-compaction
+ALTER TABLE cycling.comments
+WITH COMPACTION = {
+  'class' : 'SizeTieredCompactionStrategy',
+  'enabled' : 'true'
+};
+// END-compaction
+----
+
+== Queries against the comment tables
+
+Filter data on the time UUID field.
+
+----
+// SOURCE 'comments-table.cql'
+
+// START-removedata
+TRUNCATE cycling.comments;
+// END-removedata
+
+// START-insert_timeuuid
+INSERT INTO cycling.comments (
+  record_id,
+  id,
+  created_at
+) VALUES (
+  now(),
+  e7ae5cf3-d358-4d99-b900-85902fda9bb0,
+  '2017-02-14 12:43:20-0800'
+);
+// END-insert_timeuuid
+
+// START-s_insert_timeuuid
+SELECT record_id
+FROM cycling.comments
+WHERE id = e7ae5cf3-d358-4d99-b900-85902fda9bb0
+  AND created_at = '2017-02-14 12:43:20-0800';
+// END-s_insert_timeuuid
+
+/* START-rinsert_timeuuid
+ record_id
+--------------------------------------
+ e81aee50-4670-11e7-9fd7-81d397057b18
+
+ (1 rows)
+END-rinsert_timeuuid */
+----
+
+Return the most recent records:
+
+[source,language-cql]
+----
+// SOURCE 'comments-table.cql';
+
+CAPTURE 'select_mostrecent_from_comments.results';
+// START-select-mostrecent
+SELECT toDate(created_at) AS Date, comment, commenter
+FROM cycling.comments
+PER PARTITION LIMIT 1;
+// END-select-mostrecent
+CAPTURE OFF;
+----
+
+[source,results]
+----
+ date       | comment                                       | commenter
+------------+-----------------------------------------------+-----------
+ 2017-04-01 |        LATE RIDERS SHOULD NOT DELAY THE START |      Alex
+ 2019-11-05 | The gift certificate for winning was the best |       Amy
+ 2019-11-05 |       Fastest womens time ever way to go amy! |  Maryanne
+ 2019-11-05 |                                  Great course |   Michael
+ 2019-11-05 |                  Can't wait for the next race | Katarzyna
+ 2019-11-05 |                 Thanks for all your hard work |  Marianne
+ 2019-11-05 |                                 A for effort! |     Paolo
+ 2019-11-05 |            Closing ceremony was a little lame |  Rossella
+ 2019-11-05 |                               Next time guys! |    Marcia
+ 2019-11-05 |              So many great races thanks y'all |    Steven
+ 2019-11-05 |                        Go team, you rocked it |      Anna
+ 2019-11-05 |             Next year the tour of california! |   Melissa
+ 2019-11-05 |                           Next year for sure! |      Vera
+
+(13 rows)
+----
+
+Date and time queries:
+
+[source,language-cql]
+----
+// SOURCE 'comments-table.cql'
+
+// START-removedata
+TRUNCATE cycling.comments;
+// END-removedata
+
+/* CURRENT DATE */
+
+// START-now_date
+INSERT INTO cycling.comments (
+  id,
+  created_at
+) VALUES (
+  e7ae5cf3-d358-4d99-b900-85902fda9bb0,
+  toTimeStamp(toDate(now()))
+);
+// END-now_date
+
+// START-snow_date
+SELECT created_at
+FROM cycling.comments
+WHERE id = e7ae5cf3-d358-4d99-b900-85902fda9bb0
+LIMIT 1;
+// END-snow_date
+
+/* START-rnow_date
+created_at
+---------------------------------
+2017-06-01 00:00:00.000000+0000
+
+(1 rows)
+END-rnow_date */
+
+/* CURRENT TIMESTAMP */
+
+// START-now_timestamp
+INSERT INTO cycling.comments (
+  id,
+  created_at
+) VALUES (
+  e7ae5cf3-d358-4d99-b900-85902fda9bb0,
+  toTimeStamp(now())
+);
+// END-now_timestamp
+
+// START-snow_timestamp
+SELECT created_at FROM cycling.comments
+WHERE id = e7ae5cf3-d358-4d99-b900-85902fda9bb0
+LIMIT 1;
+// END-snow_timestamp
+
+/* START-rnow_timestamp
+created_at
+---------------------------------
+2017-06-01 03:28:41.526000+0000
+
+(1 rows)
+END-rnow_timestamp */
+
+/* DATE without time or zone */
+
+// START-string_date_no_tz
+INSERT INTO cycling.comments (
+  id,
+  created_at
+) VALUES (
+  e7ae5cf3-d358-4d99-b900-85902fda9bb0,
+  '2017-04-01'
+);
+// END-string_date_no_tz
+
+// START-sstring_date_no_tz
+SELECT created_at FROM cycling.comments
+WHERE id = e7ae5cf3-d358-4d99-b900-85902fda9bb0
+  AND created_at = '2017-04-01';
+// END-sstring_date_no_tz
+
+/* START-rstring_date_no_tz
+created_at
+---------------------------------
+2017-04-01 00:00:00.000000+0000
+
+(1 rows)
+END-rstring_date_no_tz */
+
+/* DATE WITH TIMEZONE */
+
+// START-string_date_tz
+INSERT INTO cycling.comments (
+  id,
+  created_at
+) VALUES (
+  e7ae5cf3-d358-4d99-b900-85902fda9bb0,
+  '2017-04-01+0000'
+);
+// END-string_date_tz
+
+// START-sstring_date_tz
+SELECT created_at FROM cycling.comments
+WHERE id = e7ae5cf3-d358-4d99-b900-85902fda9bb0
+  AND created_at = '2017-04-01+0000';
+// END-sstring_datetz
+
+/* START-rstring_date_tz
+created_at
+---------------------------------
+2017-04-01 00:00:00.000000+0000
+
+(1 rows)
+END-rstring-date_tz */
+
+/* FULL TIMESTAMP */
+
+// START-string_ts
+INSERT INTO cycling.comments (
+  id,
+  created_at
+) VALUES (
+  e7ae5cf3-d358-4d99-b900-85902fda9bb0,
+  '2017-04-01T11:21:59.001+0000'
+);
+// END-string_ts
+
+// START-sstring_ts
+SELECT created_at FROM cycling.comments
+WHERE id = e7ae5cf3-d358-4d99-b900-85902fda9bb0
+  AND created_at = '2017-04-01T11:21:59.001-0800';
+// END-sstring_ts
+
+/* START-rstring_ts
+created_at
+---------------------------------
+2017-04-01 11:21:59.001000-0800
+END-rstring_ts */
+----

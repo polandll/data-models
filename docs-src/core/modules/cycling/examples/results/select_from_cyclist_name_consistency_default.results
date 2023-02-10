@@ -1,0 +1,73 @@
+ id | firstname | lastname
+----+-----------+----------
+  1 |   Melissa |  HOSKINS
+
+(1 rows)
+
+Tracing session: e8c661e0-185a-11ea-9875-4584590d1ec9
+
+ activity                                                                                                            | timestamp           
+       | source        | source_elapsed | client
+---------------------------------------------------------------------------------------------------------------------+---------------------
+-------+---------------+----------------+-----------
+                                                                                                  Execute CQL3 query | 2019-12-06 19:02:11.
+966000 | 10.101.33.107 |              0 | 127.0.0.1
+                   READS.SINGLE_READ message received from /10.101.33.107 [MessagingService-Incoming-/10.101.33.107] | 2019-12-06 19:02:11.
+966000 | 10.101.35.157 |             -- | 127.0.0.1
+                   READS.SINGLE_READ message received from /10.101.33.107 [MessagingService-Incoming-/10.101.33.107] | 2019-12-06 19:02:11.
+966000 | 10.101.35.173 |             64 | 127.0.0.1
+                                      Parsing SELECT *\nFROM cycling_alt.cyclist_name \nWHERE id = 1; [CoreThread-0] | 2019-12-06 19:02:11.
+966000 | 10.101.33.107 |            126 | 127.0.0.1
+                                                     Executing single-partition query on cyclist_name [CoreThread-2] | 2019-12-06 19:02:11.
+966000 | 10.101.35.157 |            428 | 127.0.0.1
+                                                     Executing single-partition query on cyclist_name [CoreThread-0] | 2019-12-06 19:02:11.
+966000 | 10.101.35.173 |            332 | 127.0.0.1
+                                                                                  Preparing statement [CoreThread-0] | 2019-12-06 19:02:11.
+966000 | 10.101.33.107 |            282 | 127.0.0.1
+                                                                         Acquiring sstable references [CoreThread-2] | 2019-12-06 19:02:11.
+966000 | 10.101.35.157 |            490 | 127.0.0.1
+                                                                         Acquiring sstable references [CoreThread-0] | 2019-12-06 19:02:11.
+966000 | 10.101.35.173 |            414 | 127.0.0.1
+                                                            Merged data from memtables and 0 sstables [CoreThread-2] | 2019-12-06 19:02:11.
+966000 | 10.101.35.157 |            676 | 127.0.0.1
+                                                            Merged data from memtables and 0 sstables [CoreThread-0] | 2019-12-06 19:02:11.
+966000 | 10.101.35.173 |            607 | 127.0.0.1
+                                                                   Reading data from [/10.101.33.107] [CoreThread-0] | 2019-12-06 19:02:11.
+966000 | 10.101.33.107 |            420 | 127.0.0.1
+                                                               Read 1 live rows and 0 tombstone cells [CoreThread-0] | 2019-12-06 19:02:11.
+966000 | 10.101.35.173 |            672 | 127.0.0.1
+                                                     Executing single-partition query on cyclist_name [CoreThread-0] | 2019-12-06 19:02:11.
+966000 | 10.101.33.107 |            483 | 127.0.0.1
+                                               Enqueuing READS.SINGLE_READ response to /10.101.35.173 [CoreThread-0] | 2019-12-06 19:02:11.
+966000 | 10.101.35.173 |            737 | 127.0.0.1
+                                                                         Acquiring sstable references [CoreThread-0] | 2019-12-06 19:02:11.
+966001 | 10.101.33.107 |            483 | 127.0.0.1
+ Sending READS.SINGLE_READ message to /10.101.33.107, size=43 bytes [MessagingService-Outgoing-/10.101.33.107-Small] | 2019-12-06 19:02:11.
+966001 | 10.101.35.173 |            801 | 127.0.0.1
+                                                            Merged data from memtables and 0 sstables [CoreThread-0] | 2019-12-06 19:02:11.
+966001 | 10.101.33.107 |            608 | 127.0.0.1
+                                                               Read 1 live rows and 0 tombstone cells [CoreThread-0] | 2019-12-06 19:02:11.
+966001 | 10.101.33.107 |            682 | 127.0.0.1
+                                                Reading digests from [/10.101.35.173, /10.101.35.157] [CoreThread-0] | 2019-12-06 19:02:11.
+966001 | 10.101.33.107 |            745 | 127.0.0.1
+ Sending READS.SINGLE_READ message to /10.101.35.173, size=92 bytes [MessagingService-Outgoing-/10.101.35.173-Small] | 2019-12-06 19:02:11.
+967000 | 10.101.33.107 |            871 | 127.0.0.1
+                                                               Read 1 live rows and 0 tombstone cells [CoreThread-2] | 2019-12-06 19:02:11.
+967000 | 10.101.35.157 |            737 | 127.0.0.1
+ Sending READS.SINGLE_READ message to /10.101.35.157, size=92 bytes [MessagingService-Outgoing-/10.101.35.157-Small] | 2019-12-06 19:02:11.
+967000 | 10.101.33.107 |            871 | 127.0.0.1
+                                               Enqueuing READS.SINGLE_READ response to /10.101.35.157 [CoreThread-2] | 2019-12-06 19:02:11.
+967000 | 10.101.35.157 |            799 | 127.0.0.1
+ Sending READS.SINGLE_READ message to /10.101.33.107, size=43 bytes [MessagingService-Outgoing-/10.101.33.107-Small] | 2019-12-06 19:02:11.
+967000 | 10.101.35.157 |           1546 | 127.0.0.1
+                   READS.SINGLE_READ message received from /10.101.35.173 [MessagingService-Incoming-/10.101.35.173] | 2019-12-06 19:02:11.
+968000 | 10.101.33.107 |           2269 | 127.0.0.1
+                                                              Processing response from /10.101.35.173 [CoreThread-0] | 2019-12-06 19:02:11.
+968000 | 10.101.33.107 |           2470 | 127.0.0.1
+                   READS.SINGLE_READ message received from /10.101.35.157 [MessagingService-Incoming-/10.101.35.157] | 2019-12-06 19:02:11.
+969000 | 10.101.33.107 |           3125 | 127.0.0.1
+                                                              Processing response from /10.101.35.157 [CoreThread-0] | 2019-12-06 19:02:11.
+969000 | 10.101.33.107 |           3265 | 127.0.0.1
+                                                                                                    Request complete | 2019-12-06 19:02:11.
+969499 | 10.101.33.107 |           3499 | 127.0.0.1
+

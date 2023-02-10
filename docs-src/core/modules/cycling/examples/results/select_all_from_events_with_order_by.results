@@ -1,0 +1,5 @@
+ year | discipline  | start_month | start_day | race                                   | end_day | end_month | location | uci_code
+------+-------------+-------------+-----------+----------------------------------------+---------+-----------+----------+----------
+ 2017 | Cyclo-cross |           1 |         1 | DVV verzekeringen trofee - GP Sven Nys |    null |      null |     Baal |      C1 
+
+(1 rows)

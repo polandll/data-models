@@ -1,0 +1,9 @@
+ emp_id | dept_id | age | birthdate  | name
+--------+---------+-----+------------+------------
+      5 |       3 |  25 | 1996-10-04 | Lisa SMITH
+      1 |       1 |  21 | 1992-06-18 | Fred GREEN
+      2 |       1 |  22 | 1993-01-15 | John SMITH
+      4 |       2 |  24 | 1995-08-19 | Jack JONES
+      3 |       2 |  23 | 1994-02-07 |   Jane DOE
+
+(5 rows)

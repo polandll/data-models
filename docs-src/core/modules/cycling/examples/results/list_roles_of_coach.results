@@ -1,0 +1,14 @@
+ role          | username      | resource           | permission | granted | restricted | grantable
+---------------+---------------+--------------------+------------+---------+------------+-----------
+         coach |         coach | <keyspace cycling> |      ALTER |    True |      False |     False
+         coach |         coach | <keyspace cycling> |     SELECT |    True |      False |     False
+         coach |         coach | <keyspace cycling> |     MODIFY |    True |      False |     False
+ cycling_admin | cycling_admin | <keyspace cycling> |     CREATE |    True |      False |     False
+ cycling_admin | cycling_admin | <keyspace cycling> |      ALTER |    True |      False |     False
+ cycling_admin | cycling_admin | <keyspace cycling> |       DROP |    True |      False |     False
+ cycling_admin | cycling_admin | <keyspace cycling> |     SELECT |    True |      False |     False
+ cycling_admin | cycling_admin | <keyspace cycling> |     MODIFY |    True |      False |     False
+ cycling_admin | cycling_admin | <keyspace cycling> |  AUTHORIZE |    True |      False |     False
+ cycling_admin | cycling_admin | <keyspace cycling> |   DESCRIBE |    True |      False |     False
+
+(10 rows)

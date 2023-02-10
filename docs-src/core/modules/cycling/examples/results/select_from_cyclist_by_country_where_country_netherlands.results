@@ -1,0 +1,7 @@
+ age | name              | birthday
+-----+-------------------+------------
+  18 |       Bram WELTEN | 1997-03-29
+  28 | Steven KRUIKSWIJK | 1987-06-07
+  18 |  Pascal EENKHOORN | 1997-02-08
+
+(3 rows)

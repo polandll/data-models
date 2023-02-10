@@ -1,0 +1,1 @@
+DESCRIBE TABLE system_views.sstable_tasks;

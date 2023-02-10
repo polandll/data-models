@@ -1,0 +1,18 @@
+ keyspace_name      | durable_writes | replication
+--------------------+----------------+-------------------------------------------------------------------------------------
+            cycling |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1'}
+        system_auth |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1'}
+      system_schema |           True |                             {'class': 'org.apache.cassandra.locator.LocalStrategy'}
+   dse_system_local |           True |                             {'class': 'org.apache.cassandra.locator.LocalStrategy'}
+         dse_system |           True |                        {'class': 'org.apache.cassandra.locator.EverywhereStrategy'}
+         dse_leases |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1'}
+         solr_admin |           True |                        {'class': 'org.apache.cassandra.locator.EverywhereStrategy'}
+       dse_insights |           True |                        {'class': 'org.apache.cassandra.locator.EverywhereStrategy'}
+ dse_insights_local |           True |                             {'class': 'org.apache.cassandra.locator.LocalStrategy'}
+ system_distributed |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '3'}
+             system |           True |                             {'class': 'org.apache.cassandra.locator.LocalStrategy'}
+           dse_perf |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1'}
+      system_traces |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '2'}
+       dse_security |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1'}
+
+(14 rows)

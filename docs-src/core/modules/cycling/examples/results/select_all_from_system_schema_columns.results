@@ -1,0 +1,14 @@
+ keyspace_name | table_name   | column_name | clustering_order | column_name_bytes    | kind          | position | required_for_liveness 
+| type
+---------------+--------------+-------------+------------------+----------------------+---------------+----------+-----------------------
++------
+       cycling | cyclist_name |     comment |             none |     0x636f6d6d656e74 |       regular |       -1 |                 False 
+| text
+       cycling | cyclist_name |   firstname |             none | 0x66697273746e616d65 |       regular |       -1 |                 False 
+| text
+       cycling | cyclist_name |          id |             none |               0x6964 | partition_key |        0 |                 False 
+| uuid
+       cycling | cyclist_name |    lastname |             none |   0x6c6173746e616d65 |       regular |       -1 |                 False 
+| text
+
+(4 rows)

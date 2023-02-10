@@ -1,0 +1,23 @@
+= basic_info
+
+User-defined type that contains fields for basic information about a cyclist such as birthday, nationality, height, and weight.
+
+[source,language-cql]
+----
+SOURCE '0_create_keyspace.cql';
+
+// START-droptype
+DROP TYPE IF EXISTS cycling.basic_info;
+// END-droptype
+
+// START-basicinfotype
+CREATE TYPE IF NOT EXISTS cycling.basic_info (
+  birthday timestamp,
+  nationality text,
+  height text,
+  weight text
+);
+// END-basicinfotype
+
+DESC TYPE cycling.basic_info;
+----

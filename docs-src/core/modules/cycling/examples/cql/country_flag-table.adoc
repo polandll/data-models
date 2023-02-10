@@ -1,0 +1,91 @@
+= country_flag
+
+Static data type examples.
+
+Static data type examples.
+
+----
+// CREATE TABLE WITH STATIC COLUMN, example uses an integer to identify flag, but it could be a blob
+SOURCE '0_create_keyspace.cql';
+
+DROP TABLE IF EXISTS cycling.country_flag;
+
+// START-staticColumn
+CREATE TABLE IF NOT EXISTS cycling.country_flag (
+  country text,
+  cyclist_name text,
+  flag int STATIC,
+  PRIMARY KEY (country, cyclist_name)
+);
+// END-staticColumn
+
+// START-insert
+INSERT INTO cycling.country_flag (
+  country, cyclist_name, flag
+) VALUES (
+  'Belgium', 'Jacques', 1
+);
+
+INSERT INTO cycling.country_flag (
+  country, cyclist_name
+) VALUES (
+  'Belgium', 'Andre'
+);
+
+INSERT INTO cycling.country_flag (
+  country, cyclist_name, flag
+) VALUES (
+  'France', 'Andre', 2
+);
+
+INSERT INTO cycling.country_flag (
+  country, cyclist_name, flag
+) VALUES (
+  'France', 'George', 3
+);
+// END-insert
+
+CAPTURE 'select_initial_from_country_flag.results';
+// Query to view inserted data
+// START-select
+SELECT *
+FROM cycling.country_flag;
+// END-select
+CAPTURE OFF;
+
+// Truncate data without dropping the table
+// START-truncate
+TRUNCATE cycling.country_flag;
+// END-truncate
+
+// Query again to view data truncated from table
+// START-emptytable
+SELECT *
+FROM cycling.country_flag;
+// END-emptytable
+
+// Insert data again
+INSERT INTO cycling.country_flag (
+  country, cyclist_name, flag
+) VALUES (
+  'Belgium', 'Jacques', 1
+);
+
+INSERT INTO cycling.country_flag (
+  country, cyclist_name
+) VALUES (
+  'Belgium', 'Andre'
+);
+
+INSERT INTO cycling.country_flag (
+  country, cyclist_name, flag
+) VALUES (
+  'France', 'Andre', 2
+);
+
+INSERT INTO cycling.country_flag (
+  country, cyclist_name, flag
+) VALUES (
+  'France', 'George', 3
+);
+----

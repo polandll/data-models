@@ -1,0 +1,6 @@
+ cyclist_name     | blist_                                                               | solr_query
+------------------+----------------------------------------------------------------------+------------
+   Claudio HEINEN | {'bday': '27/07/1992', 'blist_age': '23', 'blist_nation': 'GERMANY'} |       null
+ Laurence BOURQUE |        {'bday': '27/07/1992', 'blist_age': '23', 'nation': 'CANADA'} |       null
+
+(2 rows)

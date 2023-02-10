@@ -1,0 +1,6 @@
+ lastname  | bio                | id
+-----------+--------------------+------
+     DUVAL |               null |    3
+ TSATEVICH | 0x0000000000000003 | null
+
+(2 rows)

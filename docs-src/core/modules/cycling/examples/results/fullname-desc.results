@@ -1,0 +1,5 @@
+CREATE TYPE cycling.fullname (
+    firstname text,
+    lastname text,
+    middlename text
+);

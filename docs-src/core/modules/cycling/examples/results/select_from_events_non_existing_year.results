@@ -1,0 +1,5 @@
+ start_month | system.max(start_day)
+-------------+-----------------------
+        null |                  null
+
+(1 rows)

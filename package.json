@@ -2,8 +2,8 @@
   "name": "data-models",
   "scripts": {
     "build:prod:data-models": "npm run build:publish:data-models",
-    "build:publish:data-models": "antora --log-level error --stacktrace --fetch --clean playbooks/site-publish-data-models.yaml",
-    "build:local:data-models": "antora --log-level error --stacktrace --fetch --clean playbooks/site-local-data-models.yml",
+    "build:publish:data-models": "antora --stacktrace --fetch --clean playbooks/site-publish-data-models.yaml",
+    "build:local:data-models": "antora --stacktrace --clean playbooks/site-local-data-models.yml",
     "build:oaslinter": "npx @redocly/cli lint api/StargateRESTv2.yaml && npx @redocly/cli lint api/StargateRESTv1.yaml && npx @redocly/cli lint api/StargateDocv2.yaml && npx @redocly/cli lint api/DevOpsv2.yaml",
     "collector": "npm run collector:restapi && npm run collector:restapiv1 && npm run collector:docapi && npm run collector:devopsapi",
     "collector:restapi": "redoc-cli build api/StargateRESTv2.yaml --output build/api/restv2.html",

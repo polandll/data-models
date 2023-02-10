@@ -1,0 +1,5 @@
+ id                                   | keyspace_name | table_name
+--------------------------------------+---------------+--------------
+ c2784ad1-065d-11ea-bd8d-9f9b8a53b5f5 |       cycling | cyclist_name
+
+(1 rows)

@@ -1,0 +1,10 @@
+ race_id | point_id | lat_long                         | race_name
+---------+----------+----------------------------------+---------------------------
+     500 |        1 |    ('Onnens', (46.8444, 6.6667)) | 47th Tour du Pays de Vaud
+     500 |        2 |    ('Champagne', (46.833, 6.65)) | 47th Tour du Pays de Vaud
+     500 |        3 |       ('Novalle', (46.833, 6.6)) | 47th Tour du Pays de Vaud
+     500 |        4 |     ('Vuiteboeuf', (46.8, 6.55)) | 47th Tour du Pays de Vaud
+     500 |        5 |   ('Baulmes', (46.7833, 6.5333)) | 47th Tour du Pays de Vaud
+     500 |        6 | ('Les Clées', (46.7222, 6.5222)) | 47th Tour du Pays de Vaud
+
+(6 rows)
