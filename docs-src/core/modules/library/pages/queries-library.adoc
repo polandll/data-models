@@ -1,1 +1,27 @@
 = Queries to write/read data
+
+What is a reader's addresses?::
+SELECT * FROM library.reader WHERE ???
+
+What is a reader's badge(s)?::
+
+
+Does a reader have a particular badge?::
+
+
+What books does a reader have checked out?::
+
+
+What articles are in which magazines?::
+
+
+What books are located in which LibCollections?::
+
+
+Is a particular book located in a LibCollection?::
+
+
+What are all the books with a particular genre?::
+
+
+What format is a book published in?::
