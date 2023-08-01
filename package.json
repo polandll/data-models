@@ -18,6 +18,7 @@
     "@antora/cli": "~3.1",
     "@antora/collector-extension": "1.0.0-alpha.2",
     "@antora/site-generator": "~3.1",
+    "@asciidoctor/tabs": "^1.0.0-beta.5",
     "@redocly/cli": "1.0.0-beta.122",
     "linkinator": "~3.0.3",
     "redoc": "~2.0.0",
